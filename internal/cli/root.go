@@ -4,6 +4,7 @@
 package cli
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"os/signal"
@@ -37,7 +38,7 @@ API keys, passwords, tokens, and private keys.`,
 
 func Execute() {
 	ctx, cancel := signal.NotifyContext(
-		rootCmd.Context(), os.Interrupt, syscall.SIGTERM,
+		context.Background(), os.Interrupt, syscall.SIGTERM,
 	)
 	defer cancel()
 
